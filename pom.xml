@@ -39,6 +39,14 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!--sinothk-base-->
+        <dependency>
+            <groupId>com.sinothk.base</groupId>
+            <artifactId>sinothk-base</artifactId>
+            <version>1.5</version>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
