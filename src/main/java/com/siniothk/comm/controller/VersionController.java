@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * API：
@@ -23,7 +24,7 @@ public class VersionController {
     private VersionService versionService;
 
     @ApiOperation(value = "版本新增", notes = "版本新增")
-    @GetMapping("/add")
+    @PostMapping("/add")
     public ResultData<Boolean> add(@ApiParam(value = "版本信息") @RequestBody VersionEntity versionVo) {
         // http://localhost:11001/version/add
         return versionService.add(versionVo);
@@ -52,7 +53,7 @@ public class VersionController {
 
     @ApiOperation(value = "获取版本列表", notes = "获取版本列表")
     @GetMapping("/getVersionList")
-    public ResultData<ArrayList<VersionEntity>> getVersionList() {
+    public ResultData<List<VersionEntity>> getVersionList() {
         // http://localhost:11001/version/getLastVersion
         return versionService.getVersionList();
     }

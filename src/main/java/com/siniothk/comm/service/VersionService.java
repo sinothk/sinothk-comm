@@ -4,6 +4,7 @@ import com.siniothk.comm.domain.VersionEntity;
 import com.sinothk.base.entity.ResultData;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface VersionService {
 
@@ -15,6 +16,6 @@ public interface VersionService {
 
     ResultData<VersionEntity> getLastVersion();
 
-    ResultData<ArrayList<VersionEntity>> getVersionList();
+    ResultData<List<VersionEntity>> getVersionList();
 
 }
