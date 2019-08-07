@@ -24,7 +24,7 @@ public class SystemSwaggerConfiguration {
                 .title("系统级别接口")
                 .description("接口包括：版本管理等！")
                 .termsOfServiceUrl("http://www.sinothk.com/")
-                .contact(new Contact("LiangYT", "", "381518188@qq.com"))
+                .contact(new Contact("LiangYT", "http://www.sinothk.com/", "381518188@qq.com"))
                 .version("1.0")
                 .build();
 
