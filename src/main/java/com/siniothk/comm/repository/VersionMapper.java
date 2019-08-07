@@ -6,4 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository("versionMapper")
 public interface VersionMapper extends BaseMapper<VersionEntity> {
+
+
+
+//    void updatePublicTime(VersionEntity versionVo);
 }

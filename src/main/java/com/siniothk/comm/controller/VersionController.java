@@ -38,7 +38,7 @@ public class VersionController {
     }
 
     @ApiOperation(value = "版本更新", notes = "版本更新")
-    @GetMapping("/update")
+    @PostMapping("/update")
     public ResultData<Boolean> update(@ApiParam(value = "版本信息") @RequestBody VersionEntity versionVo) {
         // http://localhost:11001/version/update
         return versionService.update(versionVo);

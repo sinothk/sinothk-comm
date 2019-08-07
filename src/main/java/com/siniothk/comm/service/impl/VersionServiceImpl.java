@@ -1,6 +1,7 @@
 package com.siniothk.comm.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.siniothk.comm.domain.VersionEntity;
 import com.siniothk.comm.repository.VersionMapper;
 import com.siniothk.comm.service.VersionService;
@@ -8,21 +9,26 @@ import com.sinothk.base.entity.ResultData;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service("versionService")
-public class VersionServiceImpl implements VersionService {
+public class VersionServiceImpl  extends ServiceImpl<VersionMapper, VersionEntity> implements VersionService {
 
     @Resource(name = "versionMapper")
     private VersionMapper versionMapper;
 
     @Override
     public ResultData<Boolean> add(VersionEntity versionVo) {
+        try {
+            versionVo.setVerCreateTime(new Date());
+            versionVo.setVersionStatus(VersionEntity.STATUS_INIT);
 
-        versionMapper.insert(versionVo);
-
-        return null;
+            versionMapper.insert(versionVo);
+            return ResultData.success(true);
+        } catch (Exception e) {
+            return ResultData.error(e.getMessage());
+        }
     }
 
     @Override
@@ -38,9 +44,7 @@ public class VersionServiceImpl implements VersionService {
     @Override
     public ResultData<Boolean> update(VersionEntity versionVo) {
         try {
-            QueryWrapper<VersionEntity> queryWrapper = new QueryWrapper<>();
-            queryWrapper.lambda().eq(VersionEntity::getId, versionVo.getId());
-            versionMapper.update(versionVo, queryWrapper);
+            versionMapper.updateById(versionVo);
             return ResultData.success(true);
         } catch (Exception e) {
             return ResultData.error(e.getMessage());

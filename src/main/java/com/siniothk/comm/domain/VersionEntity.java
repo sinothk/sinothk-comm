@@ -18,9 +18,9 @@ import java.util.Date;
 public class VersionEntity {
 
     // 0：未发布；1：发布; 2:禁用
-    public static int STATUS_INIT = 0;
-    public static int STATUS_ENABLE = 1;
-    public static int STATUS_DISABLE = 2;
+    public static Integer STATUS_INIT = 0;
+    public static Integer STATUS_ENABLE = 1;
+    public static Integer STATUS_DISABLE = 2;
 
 //    Field          Type           Collation        Null    Key     Default  Extra           Privileges                       Comment
 //-------------  -------------  ---------------  ------  ------  -------  --------------  -------------------------------  ---------
@@ -40,7 +40,7 @@ public class VersionEntity {
 
     @ApiModelProperty(value = "版本号")
     @TableField("versionCode")
-    private int versionCode;
+    private Integer versionCode;
 
     @ApiModelProperty(value = "版本名称")
     @TableField("versionName")
@@ -48,7 +48,7 @@ public class VersionEntity {
 
     @ApiModelProperty(value = "版本大小")
     @TableField("versionSize")
-    private long versionSize;
+    private Long versionSize;
 
     @ApiModelProperty(value = "版本路径")
     @TableField("versionPath")
@@ -56,7 +56,7 @@ public class VersionEntity {
 
     @ApiModelProperty(value = "下载用户量")
     @TableField("versionUser")
-    private int versionUser;
+    private Integer versionUser;
 
     @ApiModelProperty(value = "创建时间")
     @TableField("verCreateTime")
@@ -68,5 +68,5 @@ public class VersionEntity {
 
     @ApiModelProperty(value = "发布状态")
     @TableField("versionStatus") // 0：未发布；1：发布; 2:禁用
-    private int versionStatus;
+    private Integer versionStatus;
 }
