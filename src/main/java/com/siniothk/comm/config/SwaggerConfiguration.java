@@ -15,19 +15,18 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 @EnableSwaggerBootstrapUI
-public class SystemSwaggerConfiguration {
+public class SwaggerConfiguration {
+
+    private ApiInfo apiInfo = new ApiInfoBuilder()
+            .title("系统级别接口")
+            .description("接口包括：版本管理等！")
+            .termsOfServiceUrl("http://www.sinothk.com/")
+            .contact(new Contact("LiangYT", "http://www.sinothk.com/", "381518188@qq.com"))
+            .version("1.0")
+            .build();
 
     @Bean(value = "systemGroupRestApi")
     public Docket systemGroupRestApi() {
-
-        ApiInfo apiInfo = new ApiInfoBuilder()
-                .title("系统级别接口")
-                .description("接口包括：版本管理等！")
-                .termsOfServiceUrl("http://www.sinothk.com/")
-                .contact(new Contact("LiangYT", "http://www.sinothk.com/", "381518188@qq.com"))
-                .version("1.0")
-                .build();
-
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo)
                 .groupName("基础系统接口")
