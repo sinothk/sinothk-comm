@@ -50,4 +50,8 @@ public class DictEntity {
     @ApiModelProperty(value = "启用时间")
     @TableField("dict_status")
     private Integer dictStatus;
+
+    @ApiModelProperty(value = "排序码")
+    @TableField("dict_order")
+    private String dictOrder;
 }

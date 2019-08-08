@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Api(tags = "数据字典")
 @RestController
@@ -18,17 +19,24 @@ public class DictController {
     @Resource(name = "dictService")
     private DictService dictService;
 
-    @ApiOperation(value = "版本新增", notes = "版本新增")
+    @ApiOperation(value = "字典新增", notes = "字典新增")
     @PostMapping("/add")
-    public ResultData<Boolean> add(@ApiParam(value = "版本信息") @RequestBody DictEntity versionVo) {
-        // http://localhost:11001/version/add
+    public ResultData<Boolean> add(@ApiParam(value = "字典信息") @RequestBody DictEntity versionVo) {
+        // http://localhost:11001/dict/add
         return dictService.add(versionVo);
     }
 
-    @ApiOperation(value = "版本删除", notes = "版本删除")
+    @ApiOperation(value = "字典删除", notes = "字典删除")
     @GetMapping("/del")
-    public ResultData<Boolean> del(@ApiParam(value = "版本ID") @RequestParam("id") String id) {
-        // http://localhost:11001/version/del
+    public ResultData<Boolean> del(@ApiParam(value = "字典ID") @RequestParam("id") String id) {
+        // http://localhost:11001/dict/del
         return dictService.del(id);
+    }
+
+    @ApiOperation(value = "获取字典列表", notes = "获取字典列表")
+    @GetMapping("/getVersionList")
+    public ResultData<List<DictEntity>> getNationList(@ApiParam(value = "字典Key") @RequestParam("dictKey") String dictKey) {
+        // http://localhost:11001/dict/getNationList
+        return dictService.getNationList(dictKey);
     }
 }
