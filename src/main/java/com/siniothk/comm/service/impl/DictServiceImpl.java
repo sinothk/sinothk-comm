@@ -1,6 +1,7 @@
 package com.siniothk.comm.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.siniothk.comm.domain.Constance;
 import com.siniothk.comm.domain.DictEntity;
 import com.siniothk.comm.domain.VersionEntity;
 import com.siniothk.comm.repository.DictMapper;
@@ -23,7 +24,7 @@ public class DictServiceImpl implements DictService {
         try {
             dictEntity.setCreateTime(new Date());
             dictEntity.setUpdateTime(dictEntity.getCreateTime());
-            dictEntity.setDictStatus(VersionEntity.STATUS_ENABLE);
+            dictEntity.setDictStatus(Constance.STATUS_ENABLE);
 
             dictMapper.insert(dictEntity);
 
@@ -49,6 +50,7 @@ public class DictServiceImpl implements DictService {
             QueryWrapper<DictEntity> queryWrapper = new QueryWrapper<>();
             queryWrapper.lambda()
                     .eq(DictEntity::getParentKey, dictKey)
+                    .eq(DictEntity::getDictStatus, Constance.STATUS_ENABLE) //
                     .orderByAsc(DictEntity::getDictOrder);
 
             List<DictEntity> vsList = dictMapper.selectList(queryWrapper);

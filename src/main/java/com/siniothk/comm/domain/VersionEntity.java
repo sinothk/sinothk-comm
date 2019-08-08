@@ -16,12 +16,6 @@ import java.util.Date;
 @ToString
 @TableName(value = "tb_version")
 public class VersionEntity {
-
-    // 0：未发布；1：发布; 2:禁用
-    public static Integer STATUS_INIT = 0;
-    public static Integer STATUS_ENABLE = 1;
-    public static Integer STATUS_DISABLE = 2;
-
 //    Field          Type           Collation        Null    Key     Default  Extra           Privileges                       Comment
 //-------------  -------------  ---------------  ------  ------  -------  --------------  -------------------------------  ---------
 //    id             bigint(20)     (NULL)           NO      PRI     (NULL)   auto_increment  select,insert,update,references

@@ -2,6 +2,7 @@ package com.siniothk.comm.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.siniothk.comm.domain.Constance;
 import com.siniothk.comm.domain.VersionEntity;
 import com.siniothk.comm.repository.VersionMapper;
 import com.siniothk.comm.service.VersionService;
@@ -22,7 +23,7 @@ public class VersionServiceImpl  extends ServiceImpl<VersionMapper, VersionEntit
     public ResultData<Boolean> add(VersionEntity versionVo) {
         try {
             versionVo.setVerCreateTime(new Date());
-            versionVo.setVersionStatus(VersionEntity.STATUS_INIT);
+            versionVo.setVersionStatus(Constance.STATUS_INIT);
 
             versionMapper.insert(versionVo);
             return ResultData.success(true);
@@ -56,7 +57,7 @@ public class VersionServiceImpl  extends ServiceImpl<VersionMapper, VersionEntit
         try {
             QueryWrapper<VersionEntity> queryWrapper = new QueryWrapper<>();
             queryWrapper.lambda()
-                    .eq(VersionEntity::getVersionStatus, VersionEntity.STATUS_ENABLE)
+                    .eq(VersionEntity::getVersionStatus, Constance.STATUS_ENABLE)
                     .orderByDesc(VersionEntity::getVerPublicTime);
 
             List<VersionEntity> vsList = versionMapper.selectList(queryWrapper);
